@@ -287,6 +287,7 @@ IMAGE_INSTALL:append = " gdbserver"
 IMAGE_INSTALL:append = " hello"
 IMAGE_INSTALL:append = " helloly"
 IMAGE_INSTALL:append = " distrap"
+IMAGE_INSTALL:append = " heartbeat"
 
 #SSTATE_ALLOW_OVERLAP_FILES = "*"
 #SSTATE_ALLOW_OVERLAP_FILES += " \
@@ -302,3 +303,7 @@ IMAGE_INSTALL:append = " packagegroup-core-boot"
 RRECOMMENDS:remove:core-image-base = "ti-sgx-ddk-um"
 BAD_RECOMMENDATIONS += "ti-sgx-ddk-um"
 
+DISTRO_FEATURES:append = " systemd"
+VIRTUAL-RUNTIME_init_manager = "systemd"
+VIRTUAL-RUNTIME_initscripts = ""
+DISTRO_FEATURES:remove = "sysvinit"

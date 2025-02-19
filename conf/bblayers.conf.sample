@@ -33,3 +33,10 @@ BBLAYERS += " \
   /mnt/ssd/yocto/beaglebone/meta-distrap \
   "
 
+BBLAYERS += " \
+  /mnt/ssd/yocto/beaglebone/meta-heartbeat \
+  "
+
+BBLAYERS += " \
+  /mnt/ssd/yocto/beaglebone/meta-mylayer \
+  "
