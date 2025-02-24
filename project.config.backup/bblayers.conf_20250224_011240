@@ -1,0 +1,48 @@
+# POKY_BBLAYERS_CONF_VERSION is increased each time build/conf/bblayers.conf
+# changes incompatibly
+
+POKY_BBLAYERS_CONF_VERSION = "2"
+
+BBPATH = "${TOPDIR}"
+BBFILES ?= ""
+
+BBLAYERS ?= " \
+  /mnt/ssd/yocto/beagle-x15/poky/meta \
+  /mnt/ssd/yocto/beagle-x15/poky/meta-poky \
+  /mnt/ssd/yocto/beagle-x15/poky/meta-yocto-bsp \
+  "
+
+BBLAYERS += " \
+  /mnt/ssd/yocto/beagle-x15/meta-arm/meta-arm \
+  /mnt/ssd/yocto/beagle-x15/meta-arm/meta-arm-toolchain \
+  /mnt/ssd/yocto/beagle-x15/meta-ti/meta-ti-bsp \
+  /mnt/ssd/yocto/beagle-x15/meta-ti/meta-ti-extras \
+  /mnt/ssd/yocto/beagle-x15/meta-openembedded/meta-oe \
+  /mnt/ssd/yocto/beagle-x15/meta-openembedded/meta-python \
+  /mnt/ssd/yocto/beagle-x15/meta-openembedded/meta-networking \
+  /mnt/ssd/yocto/beagle-x15/meta-openembedded/meta-webserver \
+  "
+
+BBLAYERS += " \
+  /mnt/ssd/yocto/beagle-x15/meta-romsila \
+  "
+
+BBLAYERS += " \
+  /mnt/ssd/yocto/beagle-x15/meta-helloly \
+  "
+
+BBLAYERS += " \
+  /mnt/ssd/yocto/beagle-x15/meta-distrap \
+  "
+
+BBLAYERS += " \
+  /mnt/ssd/yocto/beagle-x15/meta-heartbeat \
+  "
+
+BBLAYERS += " \
+  /mnt/ssd/yocto/beagle-x15/meta-mylayer \
+  "
+
+BBLAYERS += " \
+  /mnt/ssd/yocto/beagle-x15/meta-streamer \
+  "
