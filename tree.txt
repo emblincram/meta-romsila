@@ -1,0 +1,580 @@
+.
+├── activate-env.sh
+├── activate-sdk.sh
+├── build
+│   ├── bitbake-cookerdaemon.log
+│   ├── cache
+│   │   ├── bb_codeparser.dat
+│   │   ├── bb_persist_data.sqlite3
+│   │   ├── bb_unihashes.dat
+│   │   ├── hashserv.db
+│   │   ├── local_file_checksum_cache.dat
+│   │   └── sanity_info
+│   ├── conf
+│   │   ├── bblayers.conf
+│   │   ├── local.conf
+│   │   └── templateconf.cfg
+│   ├── deploy-ti
+│   │   └── images
+│   ├── sd-card
+│   │   ├── core-image-full-cmdline-beagle-x15-20250223233829.rootfs.wic
+│   │   └── core-image-full-cmdline-beagle-x15-20250223233829.rootfs.wic.bmap
+│   └── tmp
+│       ├── abi_version
+│       ├── buildstats
+│       ├── cache
+│       ├── deploy
+│       ├── hosttools
+│       ├── log
+│       ├── pkgdata
+│       ├── saved_tmpdir
+│       ├── sstate-control
+│       ├── stamps
+│       ├── sysroots
+│       ├── sysroots-components
+│       ├── sysroots-uninative
+│       ├── work
+│       └── work-shared
+├── flash_emmc.sh
+├── flash_sd-card.sh
+├── install-sdk.sh
+├── meta-arm
+│   ├── ci
+│   │   ├── armgcc.yml
+│   │   ├── base.yml
+│   │   ├── check-machine-coverage
+│   │   ├── check-warnings
+│   │   ├── clang.yml
+│   │   ├── corstone1000-common.yml
+│   │   ├── corstone1000-fvp.yml
+│   │   ├── corstone1000-mps3.yml
+│   │   ├── corstone500.yml
+│   │   ├── edk2.yml
+│   │   ├── external-gccarm.yml
+│   │   ├── fvp-base-arm32.yml
+│   │   ├── fvp-baser-aemv8r64.yml
+│   │   ├── fvp-base.yml
+│   │   ├── fvps.yml
+│   │   ├── gem5-arm64.yml
+│   │   ├── gem5-atp-arm64.yml
+│   │   ├── generic-arm64.yml
+│   │   ├── get-binary-toolchains
+│   │   ├── jobs-to-kas
+│   │   ├── juno.yml
+│   │   ├── listmachines.py
+│   │   ├── logging.yml
+│   │   ├── meta-openembedded.yml
+│   │   ├── meta-virtualization.yml
+│   │   ├── meta-zephyr.yml
+│   │   ├── microbit-v1.yml
+│   │   ├── musca-b1.yml
+│   │   ├── musca-s1.yml
+│   │   ├── musl.yml
+│   │   ├── n1sdp.yml
+│   │   ├── patchreview
+│   │   ├── qemuarm64-secureboot.yml
+│   │   ├── qemuarm64.yml
+│   │   ├── qemuarmv5.yml
+│   │   ├── qemuarm.yml
+│   │   ├── qemu-cortex-a53.yml
+│   │   ├── qemu-cortex-m3.yml
+│   │   ├── qemu-cortex-r5.yml
+│   │   ├── qemu-generic-arm64.yml
+│   │   ├── selftest.yml
+│   │   ├── sgi575.yml
+│   │   ├── tc0.yml
+│   │   ├── tc1.yml
+│   │   ├── testimage.yml
+│   │   ├── testimage-zephyr.yml
+│   │   ├── tftf.yml
+│   │   ├── toolchains.yml
+│   │   ├── update-repos
+│   │   └── xen.yml
+│   ├── COPYING.MIT
+│   ├── documentation
+│   │   ├── oeqa-fvp.md
+│   │   └── runfvp.md
+│   ├── kas
+│   │   ├── corstone1000-base.yml
+│   │   ├── corstone1000-fvp.yml
+│   │   ├── corstone1000-mps3.yml
+│   │   ├── corstone500.yml
+│   │   ├── fvp-baser-aemv8r64-bsp.yml
+│   │   ├── fvp-baser-aemv8r64-rt-bsp.yml
+│   │   └── tftf.yml
+│   ├── meta-arm
+│   │   ├── classes
+│   │   ├── conf
+│   │   ├── lib
+│   │   ├── README.md
+│   │   ├── recipes-bsp
+│   │   ├── recipes-devtools
+│   │   ├── recipes-kernel
+│   │   ├── recipes-security
+│   │   └── wic
+│   ├── meta-arm-autonomy
+│   │   └── README.md
+│   ├── meta-arm-bsp
+│   │   ├── classes
+│   │   ├── conf
+│   │   ├── custom-licenses
+│   │   ├── documentation
+│   │   ├── README.md
+│   │   ├── recipes-bsp
+│   │   ├── recipes-core
+│   │   ├── recipes-kernel
+│   │   ├── recipes-security
+│   │   └── wic
+│   ├── meta-arm-toolchain
+│   │   ├── conf
+│   │   ├── README.md
+│   │   ├── recipes-bsp
+│   │   └── recipes-devtools
+│   ├── meta-atp
+│   │   ├── conf
+│   │   ├── README.md
+│   │   ├── recipes-devtools
+│   │   └── recipes-kernel
+│   ├── meta-gem5
+│   │   ├── conf
+│   │   ├── COPYING.MIT
+│   │   ├── documentation
+│   │   ├── dynamic-layers
+│   │   ├── README.md
+│   │   ├── recipes-bsp
+│   │   ├── recipes-devtools
+│   │   └── recipes-kernel
+│   ├── README.md
+│   └── scripts
+│       ├── layer-overview.py
+│       ├── machine-summary-overview.txt.jinja
+│       ├── machine-summary.py
+│       ├── report-base.html.jinja
+│       ├── report-details.html.jinja
+│       ├── report-index.html.jinja
+│       └── runfvp
+├── meta-distrap
+│   ├── conf
+│   │   └── layer.conf
+│   ├── COPYING.MIT
+│   ├── README.md
+│   └── recipes-distrap
+│       └── distrap
+├── meta-heartbeat
+│   ├── conf
+│   │   └── layer.conf
+│   ├── COPYING.MIT
+│   ├── README.md
+│   └── recipes-heartbeat
+│       └── heartbeat
+├── meta-helloly
+│   ├── conf
+│   │   └── layer.conf
+│   ├── COPYING.MIT
+│   ├── README
+│   └── recipes-helloly
+│       └── helloly
+├── meta-mylayer
+│   ├── conf
+│   │   └── layer.conf
+│   └── recipes-mylayer
+│       └── mylayer
+├── meta-openembedded
+│   ├── contrib
+│   │   ├── oe-stylize.py
+│   │   └── pw-am.sh
+│   ├── COPYING.MIT
+│   ├── meta-filesystems
+│   │   ├── conf
+│   │   ├── COPYING.MIT
+│   │   ├── README
+│   │   ├── recipes-filesystems
+│   │   ├── recipes-support
+│   │   └── recipes-utils
+│   ├── meta-gnome
+│   │   ├── classes
+│   │   ├── conf
+│   │   ├── COPYING.MIT
+│   │   ├── README
+│   │   ├── recipes-connectivity
+│   │   ├── recipes-extended
+│   │   ├── recipes-gimp
+│   │   ├── recipes-gnome
+│   │   ├── recipes-graphics
+│   │   └── recipes-support
+│   ├── meta-initramfs
+│   │   ├── classes
+│   │   ├── conf
+│   │   ├── COPYING.MIT
+│   │   ├── README
+│   │   ├── recipes-bsp
+│   │   ├── recipes-core
+│   │   ├── recipes-devtools
+│   │   └── recipes-kernel
+│   ├── meta-multimedia
+│   │   ├── classes
+│   │   ├── conf
+│   │   ├── COPYING.MIT
+│   │   ├── licenses
+│   │   ├── README
+│   │   ├── recipes-connectivity
+│   │   ├── recipes-dvb
+│   │   ├── recipes-mkv
+│   │   ├── recipes-multimedia
+│   │   └── recipes-support
+│   ├── meta-networking
+│   │   ├── classes
+│   │   ├── conf
+│   │   ├── COPYING.MIT
+│   │   ├── files
+│   │   ├── licenses
+│   │   ├── MAINTAINERS
+│   │   ├── README
+│   │   ├── recipes-connectivity
+│   │   ├── recipes-core
+│   │   ├── recipes-daemons
+│   │   ├── recipes-devtools
+│   │   ├── recipes-extended
+│   │   ├── recipes-filter
+│   │   ├── recipes-irc
+│   │   ├── recipes-kernel
+│   │   ├── recipes-netkit
+│   │   ├── recipes-protocols
+│   │   └── recipes-support
+│   ├── meta-oe
+│   │   ├── classes
+│   │   ├── conf
+│   │   ├── COPYING.MIT
+│   │   ├── dynamic-layers
+│   │   ├── lib
+│   │   ├── licenses
+│   │   ├── README
+│   │   ├── recipes-benchmark
+│   │   ├── recipes-bsp
+│   │   ├── recipes-connectivity
+│   │   ├── recipes-core
+│   │   ├── recipes-crypto
+│   │   ├── recipes-dbs
+│   │   ├── recipes-devtools
+│   │   ├── recipes-extended
+│   │   ├── recipes-gnome
+│   │   ├── recipes-graphics
+│   │   ├── recipes-kernel
+│   │   ├── recipes-multimedia
+│   │   ├── recipes-navigation
+│   │   ├── recipes-printing
+│   │   ├── recipes-security
+│   │   ├── recipes-shells
+│   │   ├── recipes-support
+│   │   └── recipes-test
+│   ├── meta-perl
+│   │   ├── conf
+│   │   ├── COPYING.MIT
+│   │   ├── README
+│   │   ├── recipes-extended
+│   │   └── recipes-perl
+│   ├── meta-python
+│   │   ├── classes
+│   │   ├── conf
+│   │   ├── COPYING.MIT
+│   │   ├── licenses
+│   │   ├── README
+│   │   ├── recipes-connectivity
+│   │   ├── recipes-core
+│   │   ├── recipes-devtools
+│   │   └── recipes-extended
+│   ├── meta-webserver
+│   │   ├── conf
+│   │   ├── COPYING.MIT
+│   │   ├── licenses
+│   │   ├── README
+│   │   ├── recipes-core
+│   │   ├── recipes-httpd
+│   │   ├── recipes-php
+│   │   ├── recipes-support
+│   │   └── recipes-webadmin
+│   ├── meta-xfce
+│   │   ├── classes
+│   │   ├── conf
+│   │   ├── README
+│   │   ├── recipes-apps
+│   │   ├── recipes-art
+│   │   ├── recipes-bindings
+│   │   ├── recipes-core
+│   │   ├── recipes-extended
+│   │   ├── recipes-multimedia
+│   │   ├── recipes-panel-plugins
+│   │   ├── recipes-thunar-plugins
+│   │   └── recipes-xfce
+│   └── README
+├── meta-romsila
+│   ├── conf
+│   │   ├── bblayers.conf.sample
+│   │   ├── layer.conf
+│   │   └── local.conf.sample
+│   ├── COPYING.MIT
+│   ├── README
+│   ├── recipes-bsp
+│   │   └── u-boot
+│   ├── recipes-connectivity
+│   │   └── dnsmasq
+│   ├── recipes-core
+│   │   ├── images
+│   │   ├── usb-gadget
+│   │   └── wic-tools
+│   ├── recipes-romsila
+│   │   └── hello
+│   ├── recipes-webserver
+│   │   ├── firmware-info
+│   │   ├── flask
+│   │   └── nginx
+│   ├── tree.txt
+│   └── wic
+│       └── beaglebone-emmc.wks
+├── meta-streamer
+│   ├── conf
+│   │   └── layer.conf
+│   ├── COPYING.MIT
+│   ├── README
+│   └── recipes-streamer
+│       └── streamer
+├── meta-ti
+│   ├── COPYING.MIT
+│   ├── meta-ti-bsp
+│   │   ├── classes
+│   │   ├── conf
+│   │   ├── COPYING.MIT
+│   │   ├── dynamic-layers
+│   │   ├── licenses
+│   │   ├── README
+│   │   ├── recipes-bsp
+│   │   ├── recipes-core
+│   │   ├── recipes-devtools
+│   │   ├── recipes-graphics
+│   │   ├── recipes-kernel
+│   │   ├── recipes-security
+│   │   ├── recipes-ti
+│   │   ├── SECURITY
+│   │   └── wic
+│   ├── meta-ti-extras
+│   │   ├── conf
+│   │   ├── COPYING.MIT
+│   │   ├── licenses
+│   │   ├── README
+│   │   ├── recipes-bsp
+│   │   ├── recipes-connectivity
+│   │   ├── recipes-devtools
+│   │   ├── recipes-multimedia
+│   │   ├── recipes-ti
+│   │   └── SECURITY
+│   └── README
+├── poky
+│   ├── bitbake
+│   │   ├── AUTHORS
+│   │   ├── bin
+│   │   ├── ChangeLog
+│   │   ├── contrib
+│   │   ├── doc
+│   │   ├── lib
+│   │   ├── LICENSE
+│   │   ├── LICENSE.GPL-2.0-only
+│   │   ├── LICENSE.MIT
+│   │   ├── README
+│   │   ├── SECURITY.md
+│   │   └── toaster-requirements.txt
+│   ├── contrib
+│   │   ├── artwork
+│   │   └── git-hooks
+│   ├── documentation
+│   │   ├── bitbake.rst
+│   │   ├── boilerplate.rst
+│   │   ├── brief-yoctoprojectqs
+│   │   ├── bsp-guide
+│   │   ├── conf.py
+│   │   ├── contributor-guide
+│   │   ├── dev-manual
+│   │   ├── figures
+│   │   ├── genindex.rst
+│   │   ├── index.rst
+│   │   ├── kernel-dev
+│   │   ├── Makefile
+│   │   ├── migration-guides
+│   │   ├── overview-manual
+│   │   ├── Pipfile
+│   │   ├── poky.yaml.in
+│   │   ├── profile-manual
+│   │   ├── README
+│   │   ├── ref-manual
+│   │   ├── releases.rst
+│   │   ├── sdk-manual
+│   │   ├── set_versions.py
+│   │   ├── sphinx
+│   │   ├── sphinx-static
+│   │   ├── standards.md
+│   │   ├── styles
+│   │   ├── template
+│   │   ├── _templates
+│   │   ├── test-manual
+│   │   ├── toaster-manual
+│   │   ├── tools
+│   │   ├── transitioning-to-a-custom-environment.rst
+│   │   └── what-i-wish-id-known.rst
+│   ├── LICENSE
+│   ├── LICENSE.GPL-2.0-only
+│   ├── LICENSE.MIT
+│   ├── MAINTAINERS.md
+│   ├── Makefile
+│   ├── MEMORIAM
+│   ├── meta
+│   │   ├── classes
+│   │   ├── conf
+│   │   ├── COPYING.MIT
+│   │   ├── files
+│   │   ├── lib
+│   │   ├── recipes-bsp
+│   │   ├── recipes-connectivity
+│   │   ├── recipes-core
+│   │   ├── recipes-devtools
+│   │   ├── recipes-example
+│   │   ├── recipes-extended
+│   │   ├── recipes-gnome
+│   │   ├── recipes-graphics
+│   │   ├── recipes-kernel
+│   │   ├── recipes-multimedia
+│   │   ├── recipes-rt
+│   │   ├── recipes-sato
+│   │   ├── recipes-support
+│   │   ├── recipes.txt
+│   │   └── site
+│   ├── meta-poky
+│   │   ├── classes
+│   │   ├── conf
+│   │   ├── README.poky.md
+│   │   └── recipes-core
+│   ├── meta-selftest
+│   │   ├── classes
+│   │   ├── conf
+│   │   ├── files
+│   │   ├── lib
+│   │   ├── README
+│   │   ├── recipes-devtools
+│   │   ├── recipes-test
+│   │   └── wic
+│   ├── meta-skeleton
+│   │   ├── conf
+│   │   ├── README.skeleton
+│   │   ├── recipes-baremetal
+│   │   ├── recipes-core
+│   │   ├── recipes-kernel
+│   │   ├── recipes-multilib
+│   │   └── recipes-skeleton
+│   ├── meta-yocto-bsp
+│   │   ├── conf
+│   │   ├── lib
+│   │   ├── README.hardware.md
+│   │   ├── recipes-bsp
+│   │   ├── recipes-graphics
+│   │   ├── recipes-kernel
+│   │   └── wic
+│   ├── oe-init-build-env
+│   ├── README.hardware.md -> meta-yocto-bsp/README.hardware.md
+│   ├── README.md -> README.poky.md
+│   ├── README.OE-Core.md
+│   ├── README.poky.md -> meta-poky/README.poky.md
+│   ├── README.qemu.md
+│   ├── scripts
+│   │   ├── autobuilder-worker-prereq-tests
+│   │   ├── bitbake-prserv-tool
+│   │   ├── bitbake-whatchanged
+│   │   ├── buildall-qemu
+│   │   ├── buildhistory-collect-srcrevs
+│   │   ├── buildhistory-diff
+│   │   ├── buildstats-diff
+│   │   ├── combo-layer
+│   │   ├── combo-layer.conf.example
+│   │   ├── combo-layer-hook-default.sh
+│   │   ├── contrib
+│   │   ├── cp-noerror
+│   │   ├── create-pull-request
+│   │   ├── cross-intercept
+│   │   ├── crosstap
+│   │   ├── devtool
+│   │   ├── gen-lockedsig-cache
+│   │   ├── gen-site-config
+│   │   ├── git
+│   │   ├── install-buildtools
+│   │   ├── lib
+│   │   ├── multilib_header_wrapper.h
+│   │   ├── native-intercept
+│   │   ├── nativesdk-intercept
+│   │   ├── oe-buildenv-internal
+│   │   ├── oe-build-perf-report
+│   │   ├── oe-build-perf-test
+│   │   ├── oe-check-sstate
+│   │   ├── oe-debuginfod
+│   │   ├── oe-depends-dot
+│   │   ├── oe-find-native-sysroot
+│   │   ├── oe-git-archive
+│   │   ├── oe-git-proxy
+│   │   ├── oe-gnome-terminal-phonehome
+│   │   ├── oe-pkgdata-browser
+│   │   ├── oe-pkgdata-browser.glade
+│   │   ├── oe-pkgdata-util
+│   │   ├── oe-publish-sdk
+│   │   ├── oepydevshell-internal.py
+│   │   ├── oe-pylint
+│   │   ├── oe-run-native
+│   │   ├── oe-selftest
+│   │   ├── oe-setup-builddir
+│   │   ├── oe-test
+│   │   ├── oe-time-dd-test.sh
+│   │   ├── oe-trim-schemas
+│   │   ├── opkg-query-helper.py
+│   │   ├── postinst-intercepts
+│   │   ├── pybootchartgui
+│   │   ├── pythondeps
+│   │   ├── README
+│   │   ├── recipetool
+│   │   ├── relocate_sdk.py
+│   │   ├── resulttool
+│   │   ├── rootfs_rpm-extract-postinst.awk
+│   │   ├── rpm2cpio.sh
+│   │   ├── runqemu
+│   │   ├── runqemu-addptable2image
+│   │   ├── runqemu-export-rootfs
+│   │   ├── runqemu-extract-sdk
+│   │   ├── runqemu-gen-tapdevs
+│   │   ├── runqemu-ifdown
+│   │   ├── runqemu-ifup
+│   │   ├── runqemu.README
+│   │   ├── send-error-report
+│   │   ├── send-pull-request
+│   │   ├── sstate-cache-management.sh
+│   │   ├── sstate-diff-machines.sh
+│   │   ├── sstate-sysroot-cruft.sh
+│   │   ├── sysroot-relativelinks.py
+│   │   ├── task-time
+│   │   ├── test-reexec
+│   │   ├── test-remote-image
+│   │   ├── tiny
+│   │   ├── verify-bashisms
+│   │   ├── wic
+│   │   ├── yocto-check-layer
+│   │   └── yocto-check-layer-wrapper
+│   └── SECURITY.md
+├── prepare_sd_card.sh
+├── prerequisites.sh
+├── readme.md
+├── save_config.sh
+└── toolbox
+    ├── activate-env.sh
+    ├── activate-sdk.sh
+    ├── flash_emmc.sh
+    ├── flash_sd-card.sh
+    ├── install-sdk.sh
+    ├── prepare_sd_card.sh
+    ├── prerequisites.sh
+    ├── README.md
+    └── save_config.sh
+
+308 directories, 270 files
